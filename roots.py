@@ -12,6 +12,7 @@ def _midpoint(f1, f2):
 ##
 # bisect: Approximates a zero of a function within a given precision
 #   runtime is proportional to log_2(|x2-x1| / precision)
+# parameter func: The function for which to find a root
 # parameter x1: An x-value serving as one of two horizontal bounds for bisection
 # parameter x2: An x-value serving as one of two horizontal bounds for bisection
 # parameter precision [default: 1e-8]: desired level of precision
@@ -38,7 +39,7 @@ def bisect(func, x1, x2, precision=DEFAULT_PRECISION):
         if (y1 * y_next < 0): (x2, y2) = (x_next, y_next)
         else: (x1, y1) = (x_next, y_next)
 
-    return x1
+    return midpoint(x1, x2)
 
 # calculate the x-intercept of a line between (x1, y1) and (x2, y2)
 # raises ValueError if y1 = y2
